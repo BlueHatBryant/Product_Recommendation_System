@@ -1,19 +1,28 @@
-# 🎈 Blank app template
+# Product Recommendation System
 
-A simple Streamlit app template for you to modify!
+## Overview
+This is a simple product recommendation system built with Streamlit. The system allows users to select a product by ID and receive suggestions for related items based on text similarity. It uses TF-IDF vectorization and cosine similarity to identify related products from a dataset.
 
-[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://blank-app-template.streamlit.app/)
+## Features
+- Select a product ID from a dropdown menu.
+- View a short description of the selected product (first three sentences).
+- Expand to see the full product description.
+- Receive up to three related product recommendations.
 
-### How to run it on your own machine
+## Requirements
+The project requires the following Python packages:
+```
+streamlit
+pandas
+scikit-learn
+```
 
-1. Install the requirements
+## Dataset
+The application uses a CSV file named `sample-data.csv`, which contains two columns:
+- `id`: Product ID
+- `description`: Full product description (including HTML tags)
 
-   ```
-   $ pip install -r requirements.txt
-   ```
+Ensure that `sample-data.csv` is in the same directory as `app.py`.
 
-2. Run the app
-
-   ```
-   $ streamlit run streamlit_app.py
-   ```
+## License
+This project is licensed under the Apache License 2.0. See the `LICENSE` file for details.
