@@ -11,7 +11,7 @@ def load_data():
 
 df = load_data()
 
-# Preprocess descriptions (remove HTML tags if necessary)
+# Preprocess descriptions (unescape HTML entities)
 df["description"] = df["description"].apply(lambda x: html.unescape(x))
 
 def get_short_description(text):
@@ -35,10 +35,10 @@ selected_id = st.selectbox("Choose a product id:", df["id"].tolist())
 selected_product = df[df["id"] == selected_id].iloc[0]
 st.subheader(selected_product["id"])
 short_description = get_short_description(selected_product['description'])
-st.write(f"*{short_description}*")
+st.markdown(f"*{short_description}*", unsafe_allow_html=True)
 
 if st.button("Expand Description"):
-    st.write(f"*{selected_product['description']}*")
+    st.markdown(f"*{selected_product['description']}*", unsafe_allow_html=True)
 
 # Get recommendations based on similarity
 idx = df.index[df["id"] == selected_id][0]
@@ -50,4 +50,4 @@ st.subheader("Related Products:")
 for i, score in similarities:
     related_product = df.iloc[i]
     related_short_description = get_short_description(related_product['description'])
-    st.write(f"**{related_product['id']}** - {related_short_description}")
+    st.markdown(f"**{related_product['id']}** - {related_short_description}", unsafe_allow_html=True)
